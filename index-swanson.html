@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Swanson Jewelers | Charleston, Illinois</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Swanson Jewelers is a family-owned jewelry store in downtown Charleston, Illinois, specializing in custom jewelry, engagement rings, repairs, and watches." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f8f6f4;
+    }
+    a { color: #a3753b; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background: #111;
+      color: #fefefe;
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    nav a {
+      margin-left: 18px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero {
+      padding: 80px 5% 60px;
+      background: radial-gradient(circle at top left, #f4e3c9, #f8f6f4);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 18px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #a3753b;
+    }
+    .hero p { max-width: 560px; margin-bottom: 24px; }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1px solid #a3753b;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      background: #a3753b;
+      color: #fff;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: #a3753b;
+    }
+    .hero-badge {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px 22px 18px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+    }
+    .hero-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .stars {
+      color: #f4b400;
+      font-size: 1rem;
+    }
+    .subtext {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    section {
+      padding: 50px 5%;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    section h3 {
+      font-size: 1.1rem;
+      margin: 18px 0 5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .section-intro {
+      margin-bottom: 25px;
+      color: #555;
+      max-width: 700px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 16px 18px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+      font-size: 0.95rem;
+    }
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.9rem;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 24px;
+      font-size: 0.95rem;
+    }
+    .services-list li::before {
+      content: "• ";
+      color: #a3753b;
+      font-weight: bold;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 40px;
+      font-size: 0.95rem;
+    }
+    .hours-grid div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 8px;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      background: #111;
+      color: #eee;
+      padding: 28px 5% 18px;
+      font-size: 0.85rem;
+    }
+    footer a { color: #f0d9b3; }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+      }
+      .hero-card { order: -1; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .services-list { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      nav a { margin-left: 0; margin-right: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Swanson Jewelers</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Visit Us</a>
+    <a href="tel:12173451513">Call</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h2>Charleston, Illinois</h2>
+    <h1>Family-Owned Custom Jewelry</h1>
+    <p>
+      Swanson Jewelers is a locally owned jewelry store in downtown Charleston, Illinois,
+      specializing in custom-made jewelry, engagement rings, and thoughtful repair work for
+      pieces you love to wear every day. <!-- Facebook / Instagram description [web:3][web:10] -->
+    </p>
+    <div class="hero-cta">
+      <a href="tel:12173451513" class="btn">Call the Store</a>
+      <a href="#visit" class="btn secondary">Visit 508 6th Street</a>
+    </div>
+    <p class="hero-badge">
+      Serving Charleston & Coles County with personal, one-on-one service.
+    </p>
+  </div>
+
+  <div class="hero-card">
+    <h3>Store Snapshot</h3>
+    <div class="hero-card-row">
+      <span>Google rating</span>
+      <div class="rating">
+        <span class="stars">★★★★★</span>
+        <span>4.7 / 5*</span>
+      </div>
+    </div>
+    <div class="hero-card-row subtext">
+      <span>Customer reviews</span>
+      <span>21+ reviews*</span>
+    </div>
+    <p class="subtext">
+      *Rating and review count reflect recent online listings and may change over time. <!-- Birdeye summary of rating and reviews [web:12] -->
+    </p>
+    <hr style="border:none;border-top:1px solid #eee;margin:12px 0;">
+    <div class="hero-card-row">
+      <span>Authorized brands</span>
+      <span>Seiko watches</span> <!-- Seiko authorized retailer listing [web:15] -->
+    </div>
+    <p class="subtext">
+      Proud Seiko authorized retailer with a curated selection of classic and modern styles. <!-- Seiko listing [web:15] -->
+    </p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Swanson Jewelers</h2>
+  <p class="section-intro">
+    Swanson Jewelers is a family-owned jewelry store located on 6th Street, just off the Coles County Courthouse square in historic downtown Charleston, Illinois. <!-- Facebook location blurb & address context [web:3][web:14] -->
+  </p>
+
+  <div class="two-col">
+    <div>
+      <h3>Our Story</h3>
+      <p>
+        Built on personal relationships and word-of-mouth, Swanson Jewelers focuses on
+        helping each customer find or create pieces that feel truly personal, from
+        engagement rings to meaningful gifts. <!-- General store positioning aligned with reviews [web:7][web:12] -->
+      </p>
+      <p>
+        Customers consistently mention relaxed visits, no-pressure conversations, and staff
+        who take extra time to explain options and work within a range of budgets. <!-- Review themes: caring, not pushy, extra step, budget help [web:7][web:10][web:12] -->
+      </p>
+
+      <h3>What We Specialize In</h3>
+      <ul class="services-list">
+        <li>Custom-made jewelry design and remounts.</li> <!-- “Custom made jewelry” [web:3][web:10] -->
+        <li>Engagement rings and wedding bands.</li> <!-- Inferred core category for custom jeweler [web:3][web:10] -->
+        <li>Jewelry repair, sizing, and cleaning.</li> <!-- Repairs and service referenced in multiple reviews [web:7][web:12] -->
+        <li>Watch batteries, sizing, and service.</li> <!-- Watches and service from reviews & listings [web:6][web:12][web:15] -->
+        <li>Buying old, unwanted, or broken jewelry, coins, and watches.</li> <!-- Facebook post about buying old jewelry/coins/watches [web:14] -->
+        <li>Everyday fine jewelry for gifts and special occasions.</li> <!-- General store offering consistent with listings [web:3][web:7][web:10] -->
+      </ul>
+    </div>
+
+    <div>
+      <h3>Why Locals Choose Us</h3>
+      <div class="card">
+        <div class="card-title">Friendly, relaxed service</div>
+        <p>
+          Reviewers highlight how welcoming and patient the team is, making it easy to ask
+          questions and never feel rushed or pressured. <!-- Review quotes about caring, relaxed, not pushy [web:7][web:12] -->
+        </p>
+      </div>
+      <div class="card" style="margin-top:14px;">
+        <div class="card-title">Local expertise</div>
+        <p>
+          As a trusted downtown business, Swanson Jewelers often helps customers redesign
+          heirloom pieces or update older settings while preserving sentimental value. <!-- Heirloom / redesign style work described in reviews [web:7][web:12] -->
+        </p>
+      </div>
+      <div style="margin-top:14px;">
+        <span class="badge-pill">Family owned</span>
+        <span class="badge-pill">Downtown Charleston</span>
+        <span class="badge-pill">Custom work</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Jewelry & Watch Services</h2>
+  <p class="section-intro">
+    Whether you are celebrating a milestone, refreshing a cherished piece, or simply
+    replacing a watch battery, Swanson Jewelers offers hands-on service and honest advice. <!-- Service positioning consistent with reviews [web:7][web:12] -->
+  </p>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Custom Design</div>
+      <p>
+        Work one-on-one to design engagement rings, pendants, and other custom pieces,
+        using new materials or stones you already own. <!-- “Custom made jewelry” and budget-friendly work [web:3][web:10] -->
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Repairs & Restoration</div>
+      <p>
+        From ring sizing to stone tightening and chain repair, your jewelry is inspected
+        and repaired with care so it is ready to wear again. <!-- Repairs described in consumer reviews [web:7][web:12] -->
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Watches & Seiko</div>
+      <p>
+        As an authorized Seiko retailer, the store carries a selection of Seiko watches and
+        offers basic watch services such as batteries and sizing. <!-- Seiko authorized retailer listing [web:15] -->
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Cleaning & Inspection</div>
+      <p>
+        Stop in to have your jewelry inspected and cleaned to keep stones secure and
+        pieces looking their best. <!-- Routine inspection/cleaning commonly referenced in jeweler services [web:6][web:12] -->
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Gold & Jewelry Buying</div>
+      <p>
+        Bring in old, unwanted, or broken jewelry, coins, and watches for evaluation if
+        you are interested in selling. <!-- Facebook post about buying old jewelry, coins, watches [web:14] -->
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Gift Ideas</div>
+      <p>
+        Browse a range of fine jewelry pieces suited for birthdays, anniversaries,
+        graduations, and other special occasions. <!-- General store assortment in directory listings [web:6][web:7][web:10] -->
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <h2>Customer Reviews</h2>
+  <p class="section-intro">
+    Swanson Jewelers maintains a strong online reputation, with customers noting excellent
+    service, fair pricing, and a comfortable in-store experience. <!-- Overall review sentiment from Birdeye and external listing [web:7][web:12] -->
+  </p>
+
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-title">Highlights from Online Reviews</div>
+        <ul style="margin-left:14px; margin-top:6px; font-size:0.95rem;">
+          <li>
+            Overall rating around 4.7 out of 5 stars across 20+ reviews on recent
+            listings. <!-- 4.7 rating with 21 reviews on Birdeye [web:12] -->
+          </li>
+          <li>
+            Shoppers describe the store as wonderful and caring, often mentioning that
+            staff go the extra step to help them. <!-- “Wonderful jewelry store that cares… always going the extra step” [web:7] -->
+          </li>
+          <li>
+            Many reviews highlight no-pressure help, clear explanations, and feeling
+            relaxed and valued during each visit. <!-- Not pushy, relaxed experience from review snippets [web:7][web:12] -->
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-title">What People Are Saying</div>
+        <p style="font-size:0.9rem; font-style:italic; margin-bottom:8px;">
+          “Wonderful jewelry store that cares about helping you… never pushy, always going
+          the extra step to help you.” <!-- Quoted snippet from Krystal H review [web:7] -->
+        </p>
+        <p style="font-size:0.8rem; color:#666;">
+          Actual customer comments from public online reviews. Individual experiences may
+          vary; check the latest reviews on Google or Facebook for the most current
+          feedback. <!-- General review disclaimer referencing external platforms [web:1][web:12] -->
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <h2>Visit Swanson Jewelers</h2>
+  <p class="section-intro">
+    You will find Swanson Jewelers on 6th Street in downtown Charleston, Illinois, just
+    west of the Coles County Courthouse. <!-- Location description from Facebook note and map directions [web:9][web:14] -->
+  </p>
+
+  <div class="two-col">
+    <div>
+      <h3>Location & Contact</h3>
+      <p>
+        <strong>Address:</strong><br>
+        508 6th Street<br>
+        Charleston, IL 61920 <!-- Address from multiple directory and brand listings [web:6][web:7][web:9][web:15] -->
+      </p>
+      <p style="margin-top:6px;">
+        <strong>Phone:</strong>
+        <a href="tel:12173451513">(217) 345-1513</a> <!-- Phone number from Manta / Seiko listing [web:6][web:15] -->
+      </p>
+
+      <h3 style="margin-top:18px;">Store Hours</h3>
+      <div class="hours-grid" aria-label="Store hours">
+        <div><span>Monday</span><span>9:00 a.m. – 5:00 p.m.</span></div>
+        <div><span>Tuesday</span><span>9:00 a.m. – 5:00 p.m.</span></div>
+        <div><span>Wednesday</span><span>9:00 a.m. – 5:00 p.m.</span></div>
+        <div><span>Thursday</span><span>9:00 a.m. – 5:00 p.m.</span></div>
+        <div><span>Friday</span><span>9:00 a.m. – 5:00 p.m.</span></div>
+        <div><span>Saturday</span><span>10:00 a.m. – 3:00 p.m.</span></div>
+        <div><span>Sunday</span><span>Closed</span></div>
+      </div>
+      <p class="subtext" style="margin-top:6px;">
+        Hours based on recent online listing; please call ahead to confirm before your visit. <!-- Hours table from Birdeye [web:12] -->
+      </p>
+
+      <h3 style="margin-top:18px;">Connect Online</h3>
+      <p>
+        <a href="https://www.facebook.com/SwansonJewelers/" target="_blank" rel="noopener">
+          Facebook: Swanson Jewelers
+        </a><br>
+        <a href="https://www.instagram.com/swansonjewelers/" target="_blank" rel="noopener">
+          Instagram: @swansonjewelers
+        </a> <!-- Social links from listing profiles [web:1][web:10] -->
+      </p>
+    </div>
+
+    <div>
+      <h3>Map & Directions</h3>
+      <p style="font-size:0.9rem; margin-bottom:10px;">
+        For turn-by-turn directions, open the store location in your preferred maps app. <!-- Directions context [web:9] -->
+      </p>
+      <p style="font-size:0.9rem;">
+        <a href="https://www.google.com/maps/place/Swanson+Jewelers/@39.4949247,-88.1759258,17z"
+           target="_blank" rel="noopener">
+          Open in Google Maps
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      &copy; <span id="year"></span> Swanson Jewelers. All rights reserved.
+    </div>
+    <div>
+      508 6th Street, Charleston, IL 61920 · <a href="tel:12173451513">(217) 345-1513</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Set current year automatically
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
